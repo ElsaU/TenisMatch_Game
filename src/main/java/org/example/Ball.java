@@ -1,7 +1,6 @@
 package org.example;
 
 import java.awt.*;
-import java.lang.reflect.Array;
 
 public class Ball {
     private static final int DIAMETER = 20;
@@ -10,6 +9,7 @@ public class Ball {
     private int y = 0;
     private int xd = 1;
     private int yd = -1;
+    private int nCollisions = 0;
 
     Game game;
 
@@ -26,23 +26,33 @@ public class Ball {
         y = y + yd;
 
         if (y + DIAMETER > game.getHeight()){
-            yd = -1;
+            yd = -1 * game.getSpeed();
         }else if (y < 0){
-            yd = 1;
+            yd = 1 * game.getSpeed();
         }
         if (collision1()){
-            xd = 1;
+            xd = 1 * game.getSpeed();
+            nCollisions++;
+            if (nCollisions%5 == 0){
+                game.upgradeSpeed();
+                System.out.println(game.getSpeed());
+            }
         }else if (collision2()){
-            xd = -1;
+            xd = -1 * game.getSpeed();
+            nCollisions++;
+            if (nCollisions%5 == 0){
+                game.upgradeSpeed();
+                System.out.println(game.getSpeed());
+            }
         }
 
-        if (x == game.getWidth()){
-            game.setScore(game.getScore(1)+1,1);
+        if (x >= game.getWidth()){
+            game.setScore(1);
             System.out.println(game.getScore(1));
             System.out.println(game.getScore(2));
             restart();
-        }else if (x == 0){
-            game.setScore(game.getScore(2)+1, 2);
+        }else if (x <= 0){
+            game.setScore(2);
             System.out.println(game.getScore(1));
             System.out.println(game.getScore(2));
             restart();
@@ -76,5 +86,8 @@ public class Ball {
         int randomY = (int) (Math.random()*2);
         xd = array[randomX];
         yd = array[randomY];
+
+        nCollisions = 0;
+        game.restartSpeed();
     }
 }

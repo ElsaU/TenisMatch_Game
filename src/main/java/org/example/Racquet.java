@@ -28,15 +28,15 @@ public class Racquet {
     public void keyPressed(KeyEvent e, int player){
         if (player == 1) {
             if (e.getKeyCode() == KeyEvent.VK_W) {
-                yd = -1;
+                yd = -1 * game.getSpeed();
             } else if (e.getKeyCode() == KeyEvent.VK_S) {
-                yd = 1;
+                yd = 1 * game.getSpeed();
             }
         }else if (player == 2){
             if (e.getKeyCode() == KeyEvent.VK_UP){
-                yd = -1;
+                yd = -1 * game.getSpeed();
             }else if (e.getKeyCode() == KeyEvent.VK_DOWN){
-                yd = 1;
+                yd = 1 * game.getSpeed();
             }
         }
     }

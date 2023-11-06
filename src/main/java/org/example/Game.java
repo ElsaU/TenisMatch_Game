@@ -14,6 +14,7 @@ public class Game extends JPanel {
 
     private int score1 = 0;
     private int score2 = 0;
+    private int speed = 1;
 
     public Game(){
         JOptionPane.showMessageDialog(this, "¿Preparados?");
@@ -78,11 +79,11 @@ public class Game extends JPanel {
         racquet2.move();
     }
 
-    public void setScore(int score, int player){
+    public void setScore(int player){
         if (player == 1){
-            score1 = score;
+            score1++;
         }else if (player == 2){
-            score2 = score;
+            score2++;
         }
     }
 
@@ -94,6 +95,18 @@ public class Game extends JPanel {
             score = score2;
         }
         return score;
+    }
+
+    public void upgradeSpeed(){
+        speed++;
+    }
+
+    public int getSpeed(){
+        return speed;
+    }
+
+    public void restartSpeed(){
+        speed = 1;
     }
 
     public void gameOver(int player) {
