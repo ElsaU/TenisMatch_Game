@@ -25,14 +25,14 @@ public class Racquet {
         }
     }
 
-    public void keyPressed(KeyEvent e, int n){
-        if (n == 1) {
+    public void keyPressed(KeyEvent e, int player){
+        if (player == 1) {
             if (e.getKeyCode() == KeyEvent.VK_W) {
                 yd = -1;
             } else if (e.getKeyCode() == KeyEvent.VK_S) {
                 yd = 1;
             }
-        }else if (n == 2){
+        }else if (player == 2){
             if (e.getKeyCode() == KeyEvent.VK_UP){
                 yd = -1;
             }else if (e.getKeyCode() == KeyEvent.VK_DOWN){
@@ -41,12 +41,12 @@ public class Racquet {
         }
     }
 
-    public void keyRelease(KeyEvent e, int n){
-        if (n == 1) {
+    public void keyRelease(KeyEvent e, int player){
+        if (player == 1) {
             if (e.getKeyCode() == KeyEvent.VK_W || e.getKeyCode() == KeyEvent.VK_S) {
                 yd = 0;
             }
-        }else if (n == 2){
+        }else if (player == 2){
             if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_DOWN){
                 yd = 0;
             }
