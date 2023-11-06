@@ -61,6 +61,8 @@ public class Game extends JPanel {
     public void paint(Graphics g){
         super.paint(g);
         Graphics2D graphics = (Graphics2D) g;
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
 
         ball.paint(graphics);
         racquet1.paint(graphics);

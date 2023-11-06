@@ -31,30 +31,24 @@ public class Ball {
             yd = 1 * game.getSpeed();
         }
         if (collision1()){
+            nCollisions++;
+            if (nCollisions%5 == 0){
+                game.upgradeSpeed();
+            }
             xd = 1 * game.getSpeed();
-            nCollisions++;
-            if (nCollisions%5 == 0){
-                game.upgradeSpeed();
-                System.out.println(game.getSpeed());
-            }
         }else if (collision2()){
-            xd = -1 * game.getSpeed();
             nCollisions++;
             if (nCollisions%5 == 0){
                 game.upgradeSpeed();
-                System.out.println(game.getSpeed());
             }
+            xd = -1 * game.getSpeed();
         }
 
         if (x >= game.getWidth()){
             game.setScore(1);
-            System.out.println(game.getScore(1));
-            System.out.println(game.getScore(2));
             restart();
         }else if (x <= 0){
             game.setScore(2);
-            System.out.println(game.getScore(1));
-            System.out.println(game.getScore(2));
             restart();
         }
 
